@@ -1456,7 +1456,7 @@ def lanzar_interfaz():
 
 
 # ==============================================================
-# EJECUCIÓN
+# EJECUCIÓN - ejecutar 2 veces
 # ==============================================================
 iniciar_camara()          # pide permiso — hilo principal
 _registrar_captura_js()   # registra callback Python para el JS
