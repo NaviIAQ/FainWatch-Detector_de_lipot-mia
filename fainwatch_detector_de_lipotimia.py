@@ -10,14 +10,7 @@ Original file is located at
 
 
 # ╔══════════════════════════════════════════════════════════════╗
-# ║   DETECTOR DE LIPOTIMIA v8 — AUTOINSTALABLE                  ║
-# ║   Pega todo en UNA sola celda y ejecuta.                     ║
-# ║   NOVEDADES v8:                                              ║
-# ║     · Estrategia 1 — Velocidad: giros rápidos ignorados      ║
-# ║     · Estrategia 2 — Coherencia: exige ≥2 parámetros         ║
-# ║       distintos activos para subir de nivel                  ║
-# ║     · Estrategia 3 — Duración mínima sostenida               ║
-# ║       antes de que parámetros posturales puntúen             ║
+# ║   DETECTOR DE LIPOTIMIA — AUTOINSTALABLE                     ║
 # ╚══════════════════════════════════════════════════════════════╝
 
 import subprocess, sys, os
@@ -111,10 +104,10 @@ class Config:
     umbral_roll:            float = 20.0
     umbral_pitch:           float = 25.0
     umbral_caida:           float = 0.10
-    # — palidez y malestar (v4/v5) —
+    # — palidez y malestar  —
     umbral_palidez:         float = 0.25
     umbral_malestar:        float = 0.30
-    # — mirada fija (v7) —
+    # — mirada fija  —
     # Ya NO hay umbral EAR fijo. El sistema aprende el EAR normal
     # del donante durante la calibración y detecta cuando sube
     # 'ear_margen_sigma' desviaciones estándar por encima de su baseline.
@@ -205,7 +198,7 @@ class EMA:
         self.value = None
 
 # ==============================================================
-# BASELINE DE COLOR (v5)
+# BASELINE DE COLOR
 # ==============================================================
 
 class BaselineColor:
@@ -257,7 +250,7 @@ class BaselineColor:
                 self.ref_V[idx] = float(np.mean(self._buf_V[idx]))
                 self.ref_S[idx] = float(np.mean(self._buf_S[idx]))
                 self.ref_G[idx] = float(np.mean(self._buf_G[idx]))
-        # Baseline EAR personal — NUEVO v7
+        # Baseline EAR personal 
         if self._buf_ear:
             self.ear_media = float(np.mean(self._buf_ear))
             self.ear_std   = float(max(np.std(self._buf_ear), 0.01))  # mínimo 0.01 para evitar σ=0
@@ -294,7 +287,7 @@ class BaselineColor:
         return float(np.clip(score_total / (peso_total * 0.25), 0.0, 1.0))
 
 # ==============================================================
-# DETECTOR DE MIRADA FIJA — NUEVO v6
+# DETECTOR DE MIRADA FIJA 
 # ==============================================================
 
 class DetectorMiradaFija:
@@ -352,7 +345,7 @@ class DetectorMiradaFija:
             return ear, 0.0, False
         mov = self._ema_mov.update(mov_raw)
 
-        # Umbral EAR dinámico: baseline + N desviaciones típicas — NUEVO v7
+        # Umbral EAR dinámico: baseline + N desviaciones típicas 
         umbral_ear = self.baseline_color.ear_media + cfg.ear_margen_sigma * self.baseline_color.ear_std
 
         ojos_muy_abiertos = ear > umbral_ear
@@ -374,7 +367,7 @@ class DetectorMiradaFija:
         self._ema_mov.reset()
 
 # ==============================================================
-# DETECTOR DE BOSTEZO — NUEVO v7b
+# DETECTOR DE BOSTEZO 
 # ==============================================================
 
 class DetectorBostezo:
@@ -451,7 +444,7 @@ class DetectorBostezo:
         return mar, squint, bostezo_confirmado
 
 # ==============================================================
-# FILTRO DE MOVIMIENTO VOLUNTARIO — NUEVO v8
+# FILTRO DE MOVIMIENTO VOLUNTARIO 
 # ==============================================================
 
 class FiltroMovimientoVoluntario:
@@ -675,8 +668,8 @@ class Estado:
     malestar:       float = 0
     ear:            float = 0
     mov_iris:       float = 0
-    bostezo_activo: bool  = False  # ← NUEVO v7b
-    total_bostezos: int   = 0      # ← NUEVO v7b
+    bostezo_activo: bool  = False  
+    total_bostezos: int   = 0      
     nivel:          int   = 0
     alertas:        list  = field(default_factory=list)
     fps:            float = 0
@@ -1080,7 +1073,7 @@ def dibujar(frame, e, calibrado, frames_cal, total_cal):
         f"Malestar: {e.malestar:.3f}",
         f"EAR     : {e.ear:.3f}",
         f"Iris mov: {e.mov_iris:.4f}",
-        f"Bostezos: {e.total_bostezos}",   # ← NUEVO v7b — contador acumulado
+        f"Bostezos: {e.total_bostezos}",   
         f"FPS     : {e.fps:.1f}",
     ]
     for i, t in enumerate(metricas):
@@ -1103,7 +1096,7 @@ def dibujar(frame, e, calibrado, frames_cal, total_cal):
 
 # ==============================================================
 # ==============================================================
-# CONTROL DE SESIÓN — v7f  (arquitectura definitiva)
+# CONTROL DE SESIÓN (arquitectura definitiva)
 # ==============================================================
 # En Colab, eval_js NO funciona desde callbacks de widgets.
 # Solución: el JS hace PUSH de frames al kernel mediante
@@ -1197,7 +1190,7 @@ def _bucle_detector(cfg, estado_lbl, salida, dh):
     detector         = DetectorLipotimia(cfg)
     detector_mirada  = DetectorMiradaFija(cfg, baseline_color)
     detector_bostezo = DetectorBostezo(cfg)
-    filtro_mov       = FiltroMovimientoVoluntario(cfg)   # ← NUEVO v8
+    filtro_mov       = FiltroMovimientoVoluntario(cfg)   
     calibrador       = Calibrador(cfg, baseline_color)
     logger           = Logger()
     t_prev           = time.time()
@@ -1247,7 +1240,7 @@ def _bucle_detector(cfg, estado_lbl, salida, dh):
                 blink, boca, roll, pitch, caida, palidez, malestar
             )
 
-            # v8: aplicar filtros de movimiento voluntario ANTES de evaluar
+            # aplicar filtros de movimiento voluntario ANTES de evaluar
             roll_ok, pitch_ok, caida_ok, mov_rapido = filtro_mov.actualizar(
                 roll, pitch, caida, cfg
             )
@@ -1301,7 +1294,7 @@ def lanzar_interfaz():
         umbral_mar_bostezo=0.45,
         umbral_squint_bostezo=0.25,
         frames_bostezo=14,
-            # v8: filtros de movimiento voluntario
+            # filtros de movimiento voluntario
             umbral_velocidad_giro=3.5,   # grados/frame; sube si hay muchos falsos positivos
             min_params_coherencia=2,     # mínimo 2 señales distintas para subir de nivel
             frames_postural_minimo=8,    # ~0.7s sostenido antes de que postura cuente
