@@ -1,5 +1,10 @@
 # FainWatch — Detector de Lipotimia
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Estado-Prototipo-orange)
+![Platform](https://img.shields.io/badge/Platform-macOS%20|%20Windows%20|%20Linux-lightgrey)
+
 Sistema de monitorización facial para donantes de sangre que analiza en tiempo real la postura, el color de piel, la apertura ocular y la expresión facial mediante una cámara estándar, sin contacto con el donante. Podría permitir detectar de forma precoz los signos previos a una lipotimia y actuar antes de que ocurra el episodio.
 
 ## Objetivo
