@@ -99,3 +99,11 @@ Todos los parámetros están al final del archivo bajo `Config(...)` con comenta
 ## Desarrollo
 
 Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Claude, de Anthropic) como asistente en la escritura, estructuración y depuración del código.
+
+
+<div align="center">
+  <h3>Demostracion de Analisis de Secuencia FainWatch</h3>
+  <video src="https://github.com/NaviIAQ/FainWatch-Detector_de_lipot-mia/raw/main/secuencia_de_img_IA_prueba_analizado.mp4" width="600" autoplay loop muted playsinline>
+    Tu navegador no soporta el formato de video.
+  </video>
+</div>
