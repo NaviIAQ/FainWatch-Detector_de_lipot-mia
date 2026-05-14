@@ -82,10 +82,6 @@ python3 fainwatch_local.py
 
 Pulsa **Q** en la ventana de la cámara para parar y generar el informe.
 
-### Versión Google Colab
-
-Para usarlo sin instalar nada, abre el archivo en Google Colab. Requiere cuenta de Google y acceso a cámara web desde el navegador.
-
 ### Configuración
 
 Todos los parámetros están al final del archivo bajo `Config(...)` con comentarios explicando qué hace cada uno y cómo ajustarlo.
