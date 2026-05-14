@@ -1,49 +1,32 @@
-# FainWatch-Detector_de_lipotimia
-Sistema de monitorización facial para donantes de sangre. Analiza en tiempo real la postura, el color de piel, la apertura ocular y la expresión facial mediante una cámara estándar y sin contacto con el donante. Podría permitir al personal detectar de forma precoz los signos previos a una lipotimia y actuar antes de que ocurra el episodio.
+# FainWatch — Detector de Lipotimia
 
-## Información de uso
+Sistema de monitorización facial para donantes de sangre que analiza en tiempo real la postura, el color de piel, la apertura ocular y la expresión facial mediante una cámara estándar, sin contacto con el donante. Podría permitir detectar de forma precoz los signos previos a una lipotimia y actuar antes de que ocurra el episodio.
 
-> [!IMPORTANT]
-> ### Requisitos
-> - Cuenta de Google
-> - Google Colab (el código está diseñado específicamente para esta plataforma)
-> - Navegador con acceso a cámara web
+## Objetivo
 
-> [!TIP]
-> ### Cómo usarlo
-> 1. Abre el archivo en Google Colab
-> 2. Ejecuta la celda (Ctrl + F9)
-> 3. Acepta el permiso de cámara en el navegador
-> 4. Pulsa INICIAR
+La lipotimia vasovagal es uno de los eventos adversos más frecuentes en los procesos de donación de sangre. Su aparición brusca, combinada con la imposibilidad de monitorizar a todos los donantes simultáneamente, hace que la detección temprana dependa de la observación visual directa o de que el propio donante comunique su malestar, algo que no siempre ocurre a tiempo.
 
-> [!NOTE]
-> ### Dependencias que se instalan automáticamente
-> - mediapipe
-> - opencv-python-headless
-> - Pillow
-> - reportlab
+FainWatch nace como una idea personal para explorar si es posible detectar estos episodios de forma automática y no invasiva.
+
+## Fase actual
 
 > [!WARNING]
-> ### Adaptación a otras plataformas
-> El código usa google.colab para la captura de cámara y los botones.
-> Si quieres ejecutarlo en local o como aplicación web, necesitaría
-> adaptarse para usar OpenCV nativo (local) o Streamlit (web).
+> FainWatch es un prototipo funcional en fase piloto. No ha sido validado clínicamente. Los resultados no deben usarse como base para decisiones médicas sin supervisión profesional.
 
-## ¿Qué hace FainWatch?
+El sistema detecta y analiza señales en tiempo real pero sus umbrales no han sido contrastados con episodios reales de lipotimia. El siguiente paso es recoger datos etiquetados de sesiones reales para validar y mejorar la detección.
 
-FainWatch es una herramienta de monitorización facial desarrollada en Python para Google Colab. Utiliza la cámara del ordenador para analizar en tiempo real el rostro y la postura del donante durante la extracción de sangre, con el objetivo de detectar de forma precoz los signos previos a una lipotimia vasovagal.
+## ¿Qué analiza?
 
 <details>
 <summary>Calibración automática</summary>
 
-Al inicio de cada sesión, durante los primeros 50 frames (~4 segundos), el sistema aprende los valores normales de ese donante concreto: su color de piel en frente y mejillas, su apertura ocular habitual y su postura de reposo. Esto permite que los umbrales de detección se adapten a cada persona, evitando falsos positivos por diferencias físicas entre donantes.
+Al inicio de cada sesión el sistema aprende los valores normales de ese donante concreto: su color de piel en frente y mejillas, su apertura ocular habitual y su postura de reposo. Esto permite que los umbrales se adapten a cada persona, evitando falsos positivos por diferencias físicas entre donantes.
 
 </details>
 
 <details>
-<summary>Qué analiza</summary>
+<summary>Parámetros monitorizados</summary>
 
-A partir de la calibración, monitoriza de forma continua ocho parámetros:
 - Cierre de ojos — detecta somnolencia prolongada
 - Apertura de boca — distingue malestar de bostezo
 - Inclinación de cabeza — roll y pitch respecto a la postura de reposo
@@ -76,21 +59,42 @@ Combina los parámetros en un sistema de puntuación y muestra en pantalla tres 
 <summary>Historial de sesión</summary>
 
 Al finalizar cada sesión genera automáticamente:
-- historico_sesion.csv — todos los datos frame a frame
-- informe_sesion.pdf — resumen con línea de tiempo, alertas y métricas medias
+- `historico_sesion.csv` — todos los datos frame a frame
+- `informe_sesion.pdf` — resumen con línea de tiempo, alertas y métricas medias
 
 </details>
+
+## Uso
+
+### Versión local (recomendada)
+
+Requiere Python 3.8 o superior y una webcam. Las dependencias se instalan automáticamente la primera vez.
+
+```bash
+cd carpeta-donde-este-el-archivo
+python3 fainwatch_local.py
+```
+
+Pulsa **Q** en la ventana de la cámara para parar y generar el informe.
+
+### Versión Google Colab
+
+Para usarlo sin instalar nada, abre el archivo en Google Colab. Requiere cuenta de Google y acceso a cámara web desde el navegador.
+
+### Configuración
+
+Todos los parámetros están al final del archivo bajo `Config(...)` con comentarios explicando qué hace cada uno y cómo ajustarlo.
 
 <details>
 <summary>Limitaciones</summary>
 
-FainWatch es un prototipo funcional desarrollado como proyecto piloto. No ha sido validado clínicamente. Requiere Google Colab para funcionar y una cámara web con buenas condiciones de iluminación para obtener resultados fiables.
+- Requiere buenas condiciones de iluminación para el análisis de color de piel
+- La versión Colab tiene mayor latencia que la versión local
+- No detecta lipotimia en donantes fuera del encuadre de la cámara
+- No ha sido validado clínicamente
 
 </details>
 
-<details>
-<summary>Desarrollo</summary>
+## Desarrollo
 
-Esta herramienta ha sido desarrollada con el apoyo de inteligencia artificial como asistente en la escritura y estructuración del código.
-
-</details>
+Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Claude, de Anthropic) como asistente en la escritura, estructuración y depuración del código.
