@@ -103,7 +103,14 @@ Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Clau
 
 <div align="center">
   <h3>Demostracion de Analisis de Secuencia FainWatch</h3>
-  <video src="https://github.com/NaviIAQ/FainWatch-Detector_de_lipot-mia/raw/main/secuencia_de_img_IA_prueba_analizado.mp4" width="600" autoplay loop muted playsinline>
-    Tu navegador no soporta el formato de video.
+  <video src="https://github.com/user-attachments/assets/735cbbb5-f0e0-4bb9-9eac-e4bccf74b7c4" width="600" autoplay loop muted playsinline>
   </video>
 </div>
+
+
+
+
+
+
+
+
