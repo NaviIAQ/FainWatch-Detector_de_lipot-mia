@@ -1,7 +1,7 @@
 # ╔══════════════════════════════════════════════════════════════╗
-# ║   FainWatch — Detector de Lipotimia                         ║
-# ║   Ejecutar: python3 fainwatch_local.py                      ║
-# ║   Parar:    pulsa Q en la ventana de la cámara              ║
+# ║   FainWatch — Detector de Lipotimia                          ║
+# ║   Ejecutar: python3 fainwatch_local.py                       ║
+# ║   Parar:    pulsa Q en la ventana de la cámara               ║
 # ╚══════════════════════════════════════════════════════════════╝
 
 import subprocess, sys, os
