@@ -76,7 +76,7 @@ Al finalizar cada sesión genera automáticamente:
 Requiere Python 3.8 o superior y una webcam. Las dependencias se instalan automáticamente la primera vez.
 
 ```bash
-cd carpeta-donde-este-el-archivo
+cd ~/Desktop/FainWatch
 python3 fainwatch_local.py
 ```
 
