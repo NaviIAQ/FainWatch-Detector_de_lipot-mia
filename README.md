@@ -113,5 +113,6 @@ Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Clau
 La siguiente gráfica muestra la comparativa entre la valoración clínica observacional y la detección automática del sistema sobre un episodio simulado de 76 segundos (video anterior). 
 > La validación se ha realizado sobre imágenes sintéticas generadas con IA. No constituye evidencia clínica.
 
-<img width="1710" height="1037" alt="FainWatch_Comparativa- valoración clínica vs detección automática" src="https://github.com/user-attachments/assets/c6b56e0a-8f63-452d-baf1-cb4693054ec1" />
+<img width="1710" height="1037" alt="FainWatch_Comparativa- valoración clínica vs detección automática" src=<img width="1710" height="1037" alt="FainWatch_Comparativa_valoración_clínica_vs_valoración_automática" src="https://github.com/user-attachments/assets/70a55cbf-691c-43f6-9985-1458e62b2c93" />
+/>
 
