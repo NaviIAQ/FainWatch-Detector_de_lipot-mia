@@ -105,6 +105,7 @@ Todos los parámetros están al final del archivo bajo `Config(...)` con comenta
 
 Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Claude, de Anthropic) como asistente en la escritura, estructuración y depuración del código.
 
+<br> <br> 
 
 <div align="center">
   <h3>Demostracion de Analisis de Secuencia FainWatch</h3>
