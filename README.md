@@ -32,14 +32,20 @@ Al inicio de cada sesión el sistema aprende los valores normales de ese donante
 <details>
 <summary>Parámetros monitorizados</summary>
 
-- Cierre de ojos — detecta somnolencia prolongada
-- Apertura de boca — distingue malestar de bostezo
-- Inclinación de cabeza — roll y pitch respecto a la postura de reposo
-- Caída postural — posición de la nariz respecto a los hombros
-- Palidez — desviación relativa del color de piel respecto al baseline
-- Expresión de malestar — combinación de gestos faciales involuntarios
-- Mirada fija — ojos muy abiertos con iris inmóvil sostenido
-- Bostezos — registrados en el historial pero sin efecto en el nivel de riesgo
+| Parámetro | Qué detecta | Puntos de riesgo |
+|-----------|-------------|-----------------|
+| Cierre de ojos | Somnolencia prolongada (blendshapes) | +3 |
+| Caída postural | Nariz cae respecto a los hombros | +3 |
+| Mirada fija | EAR elevado + iris inmóvil ≥22 frames | +3 |
+| Palidez cutánea | Desviación de color respecto al baseline personal | +2 |
+| Cabeza lateral | Roll fuera del rango calibrado | +2 |
+| Boca abierta | MAR elevado (distingue malestar de bostezo) | +1 |
+| Malestar | 11 blendshapes faciales involuntarios combinados | +1 |
+| Bostezos | MAR alto + ojos entrecerrados simultáneos | solo historial |
+
+> - El nivel de riesgo se activa cuando hay ≥2 señales simultáneas activas.
+> - La puntuación total determina el nivel: 1-2 pts = Precaución, ≥3 pts = Alerta.
+> - El nivel final es la media de los últimos 15 frames para evitar falsos positivos.
 
 </details>
 
