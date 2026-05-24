@@ -20,6 +20,15 @@ FainWatch nace como una idea personal para explorar si es posible detectar estos
 
 El sistema detecta y analiza señales en tiempo real pero sus umbrales no han sido contrastados con episodios reales de lipotimia. El siguiente paso es recoger datos etiquetados de sesiones reales para validar y mejorar la detección.
 
+## Requisitos
+- Python 3.8 o superior
+- Webcam integrada o externa
+- Buena iluminación ambiental
+- macOS, Windows o Linux
+- Los modelos de MediaPipe (descargar y colocar en la misma carpeta que el código):
+  - [face_landmarker.task](https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task)
+  - [pose_landmarker.task](https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/latest/pose_landmarker_lite.task)
+
 ## ¿Qué analiza?
 
 <details>
@@ -113,6 +122,7 @@ Este proyecto ha sido desarrollado con el apoyo de inteligencia artificial (Clau
   </video>
 </div>
 
+El vídeo muestra el análisis en tiempo real sobre una secuencia de 76 segundos generada con imágenes sintéticas de IA, que simulan la progresión de un episodio vasovagal desde el estado normal hasta la lipotimia. Las anotaciones en pantalla muestran el nivel de riesgo actual (Normal / Precaución / Alerta), las alertas activas en ese momento y los valores de cada métrica analizada frame a frame.
 
 ## Validación visual
 
