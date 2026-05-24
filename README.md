@@ -90,7 +90,6 @@ Todos los parámetros están al final del archivo bajo `Config(...)` con comenta
 <summary>Limitaciones</summary>
 
 - Requiere buenas condiciones de iluminación para el análisis de color de piel
-- La versión Colab tiene mayor latencia que la versión local
 - No detecta lipotimia en donantes fuera del encuadre de la cámara
 - No ha sido validado clínicamente
 
